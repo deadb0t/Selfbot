@@ -92,11 +92,11 @@ bot.registerCommand("ban", (msg, args) => {
 });
 
 bot.registerCommand("eval", (msg, args) => {
-  var eval = args.join(" ");
+  var code = args.join(" ");
   if(msg.author.id === bot.user.id){
     try{
-      api.updateMessage(msg.channel.id, msg.id, "Eval Input:\n```javascript\n" + code + "\n```Output:\n```fix\n" + eval(code) +"```")
-    }catch(err){api.updateMessage(msg.channel.id, msg.id, "Input:\n```javascript\n" + code + "\n```Exception:\n```fix\n" + err +"```")}
+      bot.editMessage(msg.channel.id, msg.id, "Eval Input:\n```javascript\n" + code + "\n```Output:\n```fix\n" + eval(code) +"```")
+    }catch(err){bot.editMessage(msg.channel.id, msg.id, "Input:\n```javascript\n" + code + "\n```Exception:\n```fix\n" + err +"```")}
   }
 },{
   description: "Runs Javascript code",

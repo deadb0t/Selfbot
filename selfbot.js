@@ -12,7 +12,6 @@ var bot = new Eris.CommandClient(config.token, {}, {
 
 bot.on("ready", () => {
     console.log("Ready as: " + bot.user.username);
-    bot.editIdle(true) //sets the bot client is away. If you have another client open, it will override this.
 });
 
 bot.registerCommand("ping", (msg, args) => {

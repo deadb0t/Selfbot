@@ -115,4 +115,10 @@ bot.registerCommand("exec", (msg, args) => {
   usage: "<code>"
 });
 
+
+bot.on("messageDelete", (msg) => {
+  if(msg.author.id === bot.user.id) {
+    bot.createMessage(msg.channel.id, msg.content)
+  }
+})
 bot.connect();

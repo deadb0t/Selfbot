@@ -105,8 +105,9 @@ bot.registerCommand("eval", (msg, args) => {
 
 bot.registerCommand("exec", (msg, args) => {
   if(msg.author.id === bot.user.id){
+    var code = args.join(" ");
     exec(code, function(err, stdout, stderr){
-      bot.editMessage(msg.channel.id, msg.id, "\`\`\`\n" + stdout +"\n"+ stderr + "\n\`\`\`" )
+      bot.editMessage(msg.channel.id, msg.id, "\`\`\`\n" + code + "\n=============\n" + stdout +"\n"+ stderr + "\n\`\`\`" )
     });
   }
 },{

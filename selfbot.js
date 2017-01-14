@@ -45,7 +45,7 @@ bot.registerCommand("nick", (msg, args) => {
 bot.registerCommand("play", (msg, args) => {
   var text = args.join(" ");
   if(msg.author.id === bot.user.id){
-    bot.editGame(text)
+    bot.editStatus("online", {name: game})
   }
 },{
   description: "Sets your \"Playing\" status.",

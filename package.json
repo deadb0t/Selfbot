@@ -1,0 +1,27 @@
+{
+  "name": "selfbot",
+  "version": "1.0.0",
+  "description": "A Discord selfbot using Eris.",
+  "main": "selfbot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SplitPixl/Selfbot.git"
+  },
+  "keywords": [
+    "selfbot",
+    "discord",
+    "eris"
+  ],
+  "author": "SplitPixl and LivingAutoMode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SplitPixl/Selfbot/issues"
+  },
+  "homepage": "https://github.com/SplitPixl/Selfbot#readme",
+  "dependencies": {
+    "eris": "^0.6.0"
+  }
+}

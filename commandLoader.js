@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+let totals = 0;
+
 module.exports = {
     loadCommands: function(commandDB, commandHL, callback) {
         fs.readdir("./commands", function(err, files) {
@@ -9,7 +11,7 @@ module.exports = {
                 files.forEach(function(file) {
                     if (file.endsWith(".js")) {
                         let content = require(`./commands/${file}`);
-                        console.log("Registered " + content.name)
+                        totals++
                         commandDB[content.name] = content
                         if (!content.hidden) {
                             commandHL.push(content.name)
@@ -18,6 +20,7 @@ module.exports = {
                         console.log(`Skipping non-command entity ${file}.`)
                     }
                 });
+                console.log(`Successfully loaded ${totals} commands.`)
                 // Run the callback, specified in params
                 callback(commandDB);
             }

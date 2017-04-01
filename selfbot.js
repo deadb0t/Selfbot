@@ -21,14 +21,15 @@ function init(commandDB) {
         if (msg.author.id != client.user.id) return; // Don't remove this line under ANY circumstance.      
         if (msg.content.startsWith(config.prefix)) {
             var commandScrub = msg.content.substring(config.prefix.length, 99);
-            var args = commandScrub.split(" ")
+            var _args = commandScrub.split(" ");
+            var args = commandScrub.substring(config.prefix.length + _args[0].length + 1999).split(" ")
             if (commandScrub.startsWith("help")) {
                 if (args[1]) {
-                    if (commandDB.hasOwnProperty(args[1])) {
+                    if (commandDB.hasOwnProperty(_args[1])) {
                         msg.edit(
-                            `**Command**: \`${args[1]}\`\n\n`+ 
-                            `${commandDB[args[1]].description.trim() ? `**Description:** \`${commandDB[args[1]].description}\`` : `\`No Description! D:\``}\n` + 
-                            `${commandDB[args[1]].usage.trim() ? `**Usage:** \`${config.prefix}${args[0]} ${commandDB[args[1]].usage}\`\n` : ``}`
+                            `**Command**: \`${_args[1]}\`\n\n`+ 
+                            `${commandDB[_args[1]].description.trim() ? `**Description:** \`${commandDB[_args[1]].description}\`` : `\`No Description! D:\``}\n` + 
+                            `${commandDB[_args[1]].usage.trim() ? `**Usage:** \`${config.prefix}${_args[0]} ${commandDB[_args[1]].usage}\`\n` : ``}`
                         )
                     }
                 }
@@ -43,8 +44,8 @@ function init(commandDB) {
                 }
             }
             else {
-                if (commandDB.hasOwnProperty(args[0])) {
-                    commandDB[args[0]].run(client, msg, args)
+                if (commandDB.hasOwnProperty(_args[0])) {
+                    commandDB[_args[0]].run(client, msg, args, config)
                 }  
                 
                 

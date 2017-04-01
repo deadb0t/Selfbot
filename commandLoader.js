@@ -9,10 +9,10 @@ module.exports = {
                 files.forEach(function(file) {
                     if (file.endsWith(".js")) {
                         let content = require(`./commands/${file}`);
-                        console.log("Registered " + file)
-                        commandDB[file.substring(0, file.length - 3)] = content
+                        console.log("Registered " + content.name)
+                        commandDB[content.name] = content
                         if (!content.hidden) {
-                            commandHL.push(file.substring(0, file.length - 3))
+                            commandHL.push(content.name)
                         }
                     } else {
                         console.log(`Skipping non-command entity ${file}.`)
